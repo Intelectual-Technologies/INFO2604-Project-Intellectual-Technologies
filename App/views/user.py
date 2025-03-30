@@ -38,3 +38,8 @@ def create_user_endpoint():
 @user_views.route('/static/users', methods=['GET'])
 def static_user_page():
   return send_from_directory('static', 'static-user.html')
+
+@user_views.route('/index-temp', methods=['GET'])
+def get_index_page():
+    users = get_all_users()
+    return render_template('index-temp.html')
