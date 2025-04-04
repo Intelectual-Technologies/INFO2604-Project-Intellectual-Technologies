@@ -28,7 +28,8 @@ def initialize():
             new_cat = add_category(category['idCategory'], category['strCategory'], category['strCategoryDescription'], category['strCategoryThumb'])
             
             if new_cat:
-                recipes_url = urlopen(f'https://www.themealdb.com/api/json/v1/1/filter.php?c={category['strCategory']}')
+                cat = category['strCategory'] 
+                recipes_url = urlopen(f'https://www.themealdb.com/api/json/v1/1/filter.php?c={cat}')
 
                 if recipes_url.getcode() == 200:
                     recipe_data = json.loads(recipes_url.read().decode('utf-8'))
