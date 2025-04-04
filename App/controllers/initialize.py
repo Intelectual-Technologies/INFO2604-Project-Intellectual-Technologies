@@ -7,9 +7,7 @@ from urllib.request import urlopen
 def initialize():
     db.drop_all()
     db.create_all()
-
     
-
     with open('ingredients.json') as file_I:
         data = json.load(file_I)
         ingredients = data['meals']
