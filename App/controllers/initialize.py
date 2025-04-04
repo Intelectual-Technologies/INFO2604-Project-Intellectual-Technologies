@@ -36,7 +36,8 @@ def initialize():
                     recipes = recipe_data['meals']
 
                     for id in recipes:
-                        recipe_details_url = urlopen(f'https://www.themealdb.com/api/json/v1/1/lookup.php?i={id['idMeal']}')
+                        rec = id['idMeal']
+                        recipe_details_url = urlopen(f'https://www.themealdb.com/api/json/v1/1/lookup.php?i={rec}')
 
                         if(recipe_details_url.getcode() == 200):
                             recipe_details_data = json.loads(recipe_details_url.read().decode('utf-8'))
@@ -47,11 +48,14 @@ def initialize():
 
                                 string = "strIngredient"
                                 i = 1
+                                
+                                ing = string + str(i)
                                 # add_recipe_ingredient(recipe_detail['idMeal'], recipe_detail[f'{string + str(i)}'])
 
-                                while i <= 20 and recipe_detail[f'{string + str(i)}'] is not "":
+                                while i <= 20 and recipe_detail[f'{ing}'] is not "":
                                     add_recipe_ingredient(recipe_detail['idMeal'], recipe_detail[f'{string + str(i)}'])
                                     i = i + 1
+                                    ing = string + str(i)
                                     
                         else:
                             print('Error Loading Database Recipes Details')
