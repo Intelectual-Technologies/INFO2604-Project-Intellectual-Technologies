@@ -1,5 +1,7 @@
 from .user import create_user
-from .recipe import add_ingredient, add_category, add_recipe,  add_recipe_ingredient
+from .category import add_category
+from .ingredient import add_ingredient
+from .recipe import add_recipe,  add_recipe_ingredient
 from App.database import db
 import json
 from urllib.request import urlopen
