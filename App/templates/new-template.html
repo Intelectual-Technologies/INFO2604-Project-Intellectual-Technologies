@@ -45,13 +45,13 @@
       </div>
       
     </div>
-    
+    {% block content %}
     <div class="category-content" id="content">
       
 
-      {% block content %}{% endblock %}
+      
     </div>
-    
+    {% endblock %}
   </div>
 
   <script src="{{ url_for('static', filename='main.js') }}"></script>
@@ -93,24 +93,7 @@
       showAll.addEventListener('click', signIn);
       setAuthListeners(setLoggedInUI, setLoggedOutUI);
 
-      function wait(){
-        let card= document.querySelector('#content');
-
-        let html = '';
-
-        html = `
-          <div class="card">
-          <img src="#" alt="Loading..." style="width:100%">
-          <h1>Loading...</h1>
-          <p class="title">Details:</p>
-          <p class="details">Loading...</p>
-          <button id="show-details"> Loading...</button>
-          <p><button>Loading...</button></p>
-        </div>
-        `;
-
-        card.innerHTML = html;
-      }
+      
   </script>
 </body>
 </html> 

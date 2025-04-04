@@ -1,15 +1,19 @@
 {% extends "new-template.html" %}
-{% block title %}Flask MVC App{% endblock %}
+{% block title %}Categories{% endblock %}
 
 {{ super() }}
 
 {% block content %}
-    <div class="card">
-        <img src="#" alt="Loading..." style="width:100%">
-        <h1>Loading...</h1>
-        <p class="title">Details:</p>
-        <p class="details">Loading...</p>
-        <button id="show-details"> Loading...</button>
-        <p><button>Loading...</button></p>
+    <div class="category-content" id="content">
+        {% for category in categories %}
+            <div class="card">
+                <img src="{{category.image}}" alt="{{category.name}}" style="width:100%">
+                <h1>{{category.name}}</h1>
+                <p class="title">Summary</p>
+                <p class="details">{{category.description}}</p>
+                <a href="/render-details/{{category.id}}"><button id="show-details" > Show More</button></a>
+                <p><button>Loading...</button></p>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

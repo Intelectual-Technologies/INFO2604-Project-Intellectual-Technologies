@@ -1,0 +1,18 @@
+{% extends "new-template.html" %}
+{% block title %}Categories{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+    <div class="category-content active" id="content">
+        <div class="wrapper">
+            <a href="/index-temp">
+                <button class="icon-close"> 
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </a>
+            <h1>Description</h1>
+            <p>{{category.description}}</p>
+        </div>
+    </div>
+{% endblock %}

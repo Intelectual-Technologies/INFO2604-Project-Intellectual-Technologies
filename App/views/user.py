@@ -7,6 +7,8 @@ from App.controllers import (
     create_user,
     get_all_users,
     get_all_users_json,
+    get_all_categories,
+    get_category,
     jwt_required
 )
 
@@ -41,5 +43,10 @@ def static_user_page():
 
 @user_views.route('/index-temp', methods=['GET'])
 def get_index_page():
-    users = get_all_users()
-    return render_template('index-temp.html')
+    categories = get_all_categories()
+    return render_template('index-temp.html', categories=categories)
+
+@user_views.route('/render-details/<int:id>', methods=['GET'])
+def get_details_page(id):
+    category = get_category(id)
+    return render_template('details.html', category=category)
