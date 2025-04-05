@@ -37,20 +37,19 @@
   
     <div class="category-head" id="head">
       
-        <h1 class="head-text" id="head-text">Lets see...LOADING...</h1>
-     
+        <h1 class="head-text" id="head-text">{% block head %}Lets see...LOADING...{% endblock %}</h1>
+      
       <div class="example" id="search-bar">
         <input type="text" placeholder="Search Categories.." id="searchKey">
         <button onclick=searchCategories() ><i class="fa fa-search"></i></button>
       </div>
       
     </div>
+    {% block detail %}
+    
+    {% endblock %}
     {% block content %}
-    <div class="category-content" id="content">
-      
-
-      
-    </div>
+    
     {% endblock %}
   </div>
 

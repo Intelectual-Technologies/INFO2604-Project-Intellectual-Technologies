@@ -44,7 +44,7 @@ def static_user_page():
 @user_views.route('/index-temp', methods=['GET'])
 def get_index_page():
     categories = get_all_categories()
-    return render_template('index-temp.html', categories=categories)
+    return render_template('categories.html', categories=categories, category_detail=None)
 
 @user_views.route('/render-details/<int:id>', methods=['GET'])
 def get_details_page(id):
