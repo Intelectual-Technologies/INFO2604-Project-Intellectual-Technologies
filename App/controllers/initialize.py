@@ -41,4 +41,4 @@ def initialize():
                             add_recipe_ingredient(recipe_detail['idMeal'], recipe_detail[f'{string + str(i)}'])
                             i = i + 1
                     
-    create_user('bob', 'bobpass')
+    create_user('bob', 'bob@mail.com', 'bobpass')

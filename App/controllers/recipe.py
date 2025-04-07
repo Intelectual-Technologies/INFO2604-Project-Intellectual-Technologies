@@ -32,3 +32,9 @@ def get_category_recipes(name):
     if recipes:
         return recipes
     return None
+
+def get_all_recipes():
+    recipes = Recipe.query.all()
+    if recipes:
+        return recipes
+    return None

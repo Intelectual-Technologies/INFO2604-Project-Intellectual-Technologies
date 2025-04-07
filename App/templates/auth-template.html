@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <nav>
+    <div class="left-section">
+      <a href="/">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Your Logo">
+      </a>
+      <form>
+        <div class="search">
+          <span class="material-symbols-outlined">search</span>
+          <input class="search-input" type="search" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+
+    <div class="right-section">
+      <div class="icons" id="header">
+        <a href="/">Home</a>
+        <a href="/categories">Categories</a>
+        {% block link %}
+        {% endblock %}
+        
+        <!-- <a href="signup.html">SignUp</a> -->
+      </div>
+    </div>
+  </nav>
+
+  <div class="background-img"></div>
+  {% block content %}
+
+  {% endblock %}
+ 
+
+  <script>
+  </script>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+  
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
