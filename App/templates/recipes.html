@@ -3,7 +3,15 @@
 
 {{ super() }}
 
-{% block head %}Lets see... {{category_name}} Recipes{% endblock %}
+
+{% block head %}
+    {% if category_name %}
+        Lets see... {{category_name}} Recipes
+    {% else %}
+        Lets see... All Recipes
+    {% endif %}
+{% endblock %}
+
 
 {% block content %}
     <div class="category-content" id="content">

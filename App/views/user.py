@@ -11,6 +11,7 @@ from App.controllers import (
     get_category,
     get_category_recipes,
     get_recipe,
+    get_all_recipes,
     jwt_required
 )
 
@@ -19,13 +20,14 @@ user_views = Blueprint('user_views', __name__, template_folder='../templates')
 @user_views.route('/users', methods=['GET'])
 def get_user_page():
     users = get_all_users()
+    flash("hey theer")
     return render_template('users.html', users=users)
 
 @user_views.route('/users', methods=['POST'])
 def create_user_action():
     data = request.form
     flash(f"User {data['username']} created!")
-    create_user(data['username'], data['password'])
+    create_user(data['username'], data['email'], data['password'])
     return redirect(url_for('user_views.get_user_page'))
 
 @user_views.route('/api/users', methods=['GET'])
@@ -46,6 +48,7 @@ def static_user_page():
 @user_views.route('/categories', methods=['GET'])
 def get_categories_page():
     categories = get_all_categories()
+    flash(f"Categories")
     return render_template('categories.html', categories=categories, category_detail=None)
 
 @user_views.route('/render-details/<string:name>', methods=['GET'])
@@ -76,4 +79,19 @@ def get_recipe_page(name):
             return jsonify({'message': f'{category.name} does not contain recipes'})
     else:
         print("Category does not exist")
+    return redirect(url_for('user_views.get_categories_page'))
+
+@user_views.route('/signup-page', methods=['GET'])
+def get_signup_page():
+    return render_template('signup.html')
+
+@user_views.route('/login-page', methods=['GET'])
+def get_login_page():
+    return render_template('login.html')
+
+@user_views.route('/render-all-recipes', methods=['GET'])
+def get_all_recipes_page():
+    recipes = get_all_recipes()
+    if recipes:
+        return render_template('recipes.html', recipes=recipes)
     return redirect(url_for('user_views.get_categories_page'))

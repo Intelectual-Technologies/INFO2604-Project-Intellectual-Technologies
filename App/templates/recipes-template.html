@@ -16,17 +16,17 @@
     <br>
     <a href="/categories">Categories</a>
     <br>
-    <a href="javascript:AllRecipes();" id="showAll">All Recipes</a>
+    <a href="/render-all-recipes" id="showAll">All Recipes</a>
     <br>
     <a href="#" id="loginBtn">Login</a>
     <br>
-    <a href="#" id="logoutBtn">Logout</a>
+    <a href="/signup-page" >Signup</a>
     <br>
     <p id="user">
       Welcome Anonymous
     </p>
     <br>
-    <a href="index.html" id="a1">
+    <a href="/" id="a1">
       <img src="../static/logo.png" alt="Your Logo">
     </a>
     
@@ -57,40 +57,8 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-
-  <script type="module">
-    import { signIn, logout, auth, setAuthListeners } from '../static/auth.js';
-
-      let loginBtn = document.querySelector('#loginBtn');
-      let logoutBtn = document.querySelector('#logoutBtn');
-      let showAll= document.querySelector('#showAll');
-      
-
-      async function setLoggedInUI(){
-        console.log("login")
-          
-          wait();
-          getAllRecipesIn();
-          document.querySelector('#loginBtn').style.display = 'none';
-          document.querySelector('#logoutBtn').style.display = 'inline-block';
-          document.querySelector('#showAll').style.display = 'inline-block';
-          document.querySelector('#user').style.display = 'inline-block';
-          document.querySelector('#user').style.color = '#000080';
-      }
-
-      async function setLoggedOutUI(){
-          wait();
-          getAllRecipesOut();
-          document.querySelector('#loginBtn').style.display = 'inline-block';
-          document.querySelector('#logoutBtn').style.display = 'none';
-          document.querySelector('#showAll').style.display = 'none';
-      }
-
-      //attatch listeners
-      logoutBtn.addEventListener('click', logout);
-      loginBtn.addEventListener('click', signIn);
-      showAll.addEventListener('click', signIn);
-      setAuthListeners(setLoggedInUI, setLoggedOutUI);
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
 
       M.AutoInit();
 
