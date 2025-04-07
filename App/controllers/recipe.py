@@ -1,34 +1,8 @@
-from App.models import Ingredient, Category, Recipe
+from App.models import Ingredient, Recipe
 from App.database import db
 
-def add_ingredient(id, name, description):
-    ingredient = Ingredient(id=id, name=name, description=description)
-    db.session.add(ingredient)
-    db.session.commit()
-    return ingredient
-
-def add_category(id, name, description, image):
-    category = Category(id=id, name=name, description=description, image=image)
-    db.session.add(category)
-    db.session.commit()
-    return category
-
-def get_category(id):
-    category = Category.query.filter_by(id=id).first()
-    if category:
-        return category
-    else:
-        return False
-
-def get_all_categories():
-    categories = Category.query.all()
-    if categories:
-        return categories
-    else:
-        return False
-
-def add_recipe(id, name, instructions, image, yt, category_name):
-    recipe = Recipe(id=id, name=name, instructions=instructions, image=image, yt=yt, category_name=category_name)
+def add_recipe(id, name, description, image, yt, category_name):
+    recipe = Recipe(id=id, name=name, description=description, image=image, yt=yt, category_name=category_name)
     db.session.add(recipe)
     db.session.commit()
     return recipe
@@ -45,3 +19,16 @@ def add_recipe_ingredient(recipe_id, ingredient_name):
         db.session.add(recipe)
         db.session.commit()
     return True
+
+def get_recipe(name):
+    recipe = Recipe.query.filter_by(name=name).first()
+    if recipe:
+        return recipe
+    return None
+
+def get_category_recipes(name):
+    recipes = Recipe.query.filter_by(category_name=name).all()
+
+    if recipes:
+        return recipes
+    return None
