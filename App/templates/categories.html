@@ -13,8 +13,8 @@
                 <h1>{{category.name}}</h1>
                 <p class="title">Summary</p>
                 <p class="details">{{category.description}}</p>
-                <a href="/render-details/{{category.id}}"><button id="show-details" > Show More</button></a>
-                <p><button>Loading...</button></p>
+                <a href="/render-details/{{category.name}}"><button id="show-details" > Show More</button></a>
+                <a href="/render-recipes/{{category.name}}"><p><button>Show {{category.name}} Recipes</button></p></a>
             </div>
         {% endfor %}
     </div>

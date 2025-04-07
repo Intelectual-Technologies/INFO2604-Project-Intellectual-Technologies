@@ -14,7 +14,7 @@
     <br>
     <a href="/">Home</a>
     <br>
-    <a href="javascript:catBackBtn();">Categories</a>
+    <a href="/categories">Categories</a>
     <br>
     <a href="javascript:AllRecipes();" id="showAll">All Recipes</a>
     <br>
@@ -92,7 +92,15 @@
       showAll.addEventListener('click', signIn);
       setAuthListeners(setLoggedInUI, setLoggedOutUI);
 
-      
+      M.AutoInit();
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              {% for message in messages %}
+              M.toast({html: '{{message}}'})
+              {% endfor %}
+          {% endif %}
+        {% endwith %}
   </script>
 </body>
 </html> 

@@ -1,18 +1,29 @@
 {% extends "recipes-template.html" %}
-{% block title %}Categories{% endblock %}
+{% block title %}{{item_details.name}} Details{% endblock %}
 
 {{ super() }}
+
+{% block head %}Lets see... {{item_details.name}} Details{% endblock %}
 
 {% block content %}
     <div class="category-content active" id="content">
         <div class="wrapper">
-            <a href="/index-temp">
-                <button class="icon-close"> 
-                    <ion-icon name="close"></ion-icon>
-                </button>
-            </a>
+            {% if item_details.category_name %}
+                <a href="/render-recipes/{{item_details.category_name}}">
+                    <button class="icon-close"> 
+                        <ion-icon name="close"></ion-icon>
+                    </button>
+                </a>
+            {% else %}
+                <a href="/index-temp">
+                    <button class="icon-close"> 
+                        <ion-icon name="close"></ion-icon>
+                    </button>
+                </a>
+            {% endif %}
+                
             <h1>Description</h1>
-            <p>{{category.description}}</p>
+            <p>{{item_details.description}}</p>
         </div>
     </div>
 {% endblock %}

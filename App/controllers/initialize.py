@@ -31,9 +31,9 @@ def initialize():
             
             if new_cat:
                 for recipe_detail in recipe_details:
-                    if recipe_detail['strCategory'] is category['strCategory']:
+                    
+                    if recipe_detail['strCategory'] == category['strCategory']:
                         add_recipe(recipe_detail['idMeal'], recipe_detail['strMeal'], recipe_detail['strInstructions'], recipe_detail['strMealThumb'], recipe_detail['strYoutube'], category['strCategory'])
-
                         string = "strIngredient"
                         i = 1
 

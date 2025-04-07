@@ -9,6 +9,8 @@ from App.controllers import (
     get_all_users_json,
     get_all_categories,
     get_category,
+    get_category_recipes,
+    get_recipe,
     jwt_required
 )
 
@@ -41,12 +43,37 @@ def create_user_endpoint():
 def static_user_page():
   return send_from_directory('static', 'static-user.html')
 
-@user_views.route('/index-temp', methods=['GET'])
-def get_index_page():
+@user_views.route('/categories', methods=['GET'])
+def get_categories_page():
     categories = get_all_categories()
     return render_template('categories.html', categories=categories, category_detail=None)
 
-@user_views.route('/render-details/<int:id>', methods=['GET'])
-def get_details_page(id):
-    category = get_category(id)
-    return render_template('details.html', category=category)
+@user_views.route('/render-details/<string:name>', methods=['GET'])
+def get_details_page(name):
+    category = get_category(name)
+    if category:
+        return render_template('details.html', item_details=category)
+    else:
+        recipe = get_recipe(name)
+        if recipe:
+            return render_template('details.html', item_details=recipe)
+    return redirect(url_for('user_views.get_categories_page'))
+
+@user_views.route('/back', methods=['GET'])
+def back():
+    return redirect(url_for(request.referrer))
+
+@user_views.route('/render-recipes/<string:name>', methods=['GET'])
+def get_recipe_page(name):
+    category = get_category(name)
+    if category:
+        recipes = get_category_recipes(category.name)
+        if recipes:
+            return render_template('recipes.html', recipes=recipes, category_name = category.name)
+            
+        else:
+            print("Category does not contain recipes")
+            return jsonify({'message': f'{category.name} does not contain recipes'})
+    else:
+        print("Category does not exist")
+    return redirect(url_for('user_views.get_categories_page'))

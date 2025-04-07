@@ -7,16 +7,16 @@ def add_category(id, name, description, image):
     db.session.commit()
     return category
 
-def get_category(id):
-    category = Category.query.filter_by(id=id).first()
+def get_category(name):
+    category = Category.query.filter_by(name=name).first()
     if category:
         return category
     else:
-        return False
+        return None
 
 def get_all_categories():
     categories = Category.query.all()
     if categories:
         return categories
     else:
-        return False
+        return None
