@@ -34,10 +34,8 @@ def initialize():
         string = "strIngredient"
         i = 1
 
-        while recipe_detail[f'{string + str(i)}'] != None and recipe_detail[f'{string + str(i)}'] != "":
+        while i <= 20 and recipe_detail[f'{string + str(i)}'] != "":
             add_recipe_ingredient(recipe_detail['idMeal'], recipe_detail[f'{string + str(i)}'])
             i = i + 1
-            if i == 21:
-                break
                     
     create_user('bob', 'bob@mail.com', 'bobpass')
