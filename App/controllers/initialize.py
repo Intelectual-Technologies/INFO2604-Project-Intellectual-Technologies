@@ -22,23 +22,20 @@ def initialize():
         data = json.load(file_C)
         categories = data['categories']
 
+    for category in categories:
+        add_category(category['idCategory'], category['strCategory'], category['strCategoryDescription'], category['strCategoryThumb'])
+
     with open('recipes.json') as file_R:
         recipe_details_data = json.load(file_R)
         recipe_details = recipe_details_data['meals']
+         
+        for recipe_detail in recipe_details:
+            add_recipe(recipe_detail['idMeal'], recipe_detail['strMeal'], recipe_detail['strInstructions'], recipe_detail['strMealThumb'], recipe_detail['strYoutube'], recipe_detail['strCategory'])
+            string = "strIngredient"
+            i = 1
 
-        for category in categories:
-            new_cat = add_category(category['idCategory'], category['strCategory'], category['strCategoryDescription'], category['strCategoryThumb'])
-            
-            if new_cat:
-                for recipe_detail in recipe_details:
-                    
-                    if recipe_detail['strCategory'] == category['strCategory']:
-                        add_recipe(recipe_detail['idMeal'], recipe_detail['strMeal'], recipe_detail['strInstructions'], recipe_detail['strMealThumb'], recipe_detail['strYoutube'], category['strCategory'])
-                        string = "strIngredient"
-                        i = 1
-
-                        while i <= 20 and recipe_detail[f'{string + str(i)}'] is not "":
-                            add_recipe_ingredient(recipe_detail['idMeal'], recipe_detail[f'{string + str(i)}'])
-                            i = i + 1
+            while i <= 20 and recipe_detail[f'{string + str(i)}'] != "":
+                add_recipe_ingredient(recipe_detail['idMeal'], recipe_detail[f'{string + str(i)}'])
+                i = i + 1
                     
     create_user('bob', 'bob@mail.com', 'bobpass')

@@ -18,13 +18,17 @@
     <br>
     <a href="/render-all-recipes" id="showAll">All Recipes</a>
     <br>
+    {% if not is_authenticated %}
     <a href="#" id="loginBtn">Login</a>
     <br>
     <a href="/signup-page" >Signup</a>
     <br>
+    {% endif %}
+    {% if current_user != none %}
     <p id="user">
-      Welcome Anonymous
+      Welcome {{current_user.username}}
     </p>
+    {% endif %}
     <br>
     <a href="/" id="a1">
       <img src="../static/logo.png" alt="Your Logo">
