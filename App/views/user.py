@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, jsonify, request, send_from_directory, flash, redirect, url_for
-from flask_jwt_extended import jwt_required, current_user as jwt_current_user
+from flask_jwt_extended import jwt_required, current_user 
 
 from.index import index_views
 
@@ -20,7 +20,7 @@ user_views = Blueprint('user_views', __name__, template_folder='../templates')
 @user_views.route('/users', methods=['GET'])
 def get_user_page():
     users = get_all_users()
-    flash("hey theer")
+    
     return render_template('users.html', users=users)
 
 @user_views.route('/users', methods=['POST'])
@@ -46,10 +46,11 @@ def static_user_page():
   return send_from_directory('static', 'static-user.html')
 
 @user_views.route('/categories', methods=['GET'])
+@jwt_required()
 def get_categories_page():
     categories = get_all_categories()
     flash(f"Categories")
-    return render_template('categories.html', categories=categories, category_detail=None)
+    return render_template('categories.html', categories=categories, category_detail=None, current_user = current_user)
 
 @user_views.route('/render-details/<string:name>', methods=['GET'])
 def get_details_page(name):
