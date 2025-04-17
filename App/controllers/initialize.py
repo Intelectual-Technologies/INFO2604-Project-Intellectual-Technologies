@@ -29,13 +29,13 @@ def initialize():
         recipe_details_data = json.load(file_R)
         recipe_details = recipe_details_data['meals']
          
-        for recipe_detail in recipe_details:
-            add_recipe(recipe_detail['idMeal'], recipe_detail['strMeal'], recipe_detail['strInstructions'], recipe_detail['strMealThumb'], recipe_detail['strYoutube'], recipe_detail['strCategory'])
-            string = "strIngredient"
-            i = 1
+    for recipe_detail in recipe_details:
+        add_recipe(recipe_detail['idMeal'], recipe_detail['strMeal'], recipe_detail['strInstructions'], recipe_detail['strMealThumb'], recipe_detail['strYoutube'], recipe_detail['strCategory'])
+        string = "strIngredient"
+        i = 1
 
-            while i <= 20 and recipe_detail[f'{string + str(i)}'] != "":
-                add_recipe_ingredient(recipe_detail['idMeal'], recipe_detail[f'{string + str(i)}'])
-                i = i + 1
+        while i <= 20 and recipe_detail[f'{string + str(i)}'] != "":
+            add_recipe_ingredient(recipe_detail['idMeal'], recipe_detail[f'{string + str(i)}'])
+            i = i + 1
                     
     create_user('bob', 'bob@mail.com', 'bobpass')
