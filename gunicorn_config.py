@@ -11,6 +11,8 @@ workers = 4
 # Use the 'gevent' worker type for async performance.
 worker_class = 'gevent'
 
+timeout = 120
+
 # Log level
 loglevel = 'info'
 
