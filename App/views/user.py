@@ -18,6 +18,7 @@ from App.controllers import (
 user_views = Blueprint('user_views', __name__, template_folder='../templates')
 
 @user_views.route('/users', methods=['GET'])
+@jwt_required()
 def get_user_page():
     users = get_all_users()
     
