@@ -17,22 +17,18 @@
       <a href="/">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Your Logo">
       </a>
-      <form>
-        <div class="search">
-          <span class="material-symbols-outlined">search</span>
-          <input class="search-input" type="search" placeholder="Search...">
-        </div>
-      </form>
     </div>
 
     <div class="right-section">
       <div class="icons" id="header">
-        <a href="/">Home</a>
-        <a href="/categories">Categories</a>
+        {% if is_authenticated %}
+          <a href="/users">My Recipes</a>
+          <a href="/categories">Categories</a>
+        {% endif %}
+        <a href="/render-all-recipes">Recipes</a>
         {% block link %}
         {% endblock %}
         
-        <!-- <a href="signup.html">SignUp</a> -->
       </div>
     </div>
   </nav>
