@@ -71,3 +71,11 @@ def logout_api():
     response = jsonify(message="Logged Out!")
     unset_jwt_cookies(response)
     return response
+
+@auth_views.route('/signup-page', methods=['GET'])
+def get_signup_page():
+    return render_template('signup.html')
+
+@auth_views.route('/login-page', methods=['GET'])
+def get_login_page():
+    return render_template('login.html')
