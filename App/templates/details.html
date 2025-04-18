@@ -9,17 +9,17 @@
     <div class="category-content active" id="content">
         <div class="wrapper">
             {% if item_details.category_name %}
-                <a href="/render-recipes/{{item_details.category_name}}">
-                    <button class="icon-close"> 
+                <!-- <a href="/render-recipes/{{item_details.category_name}}"> -->
+                    <button onclick="history.back()" class="icon-close"> 
                         <ion-icon name="close"></ion-icon>
                     </button>
-                </a>
+                <!-- </a> -->
             {% else %}
-                <a href="/index-temp">
-                    <button class="icon-close"> 
+                <!-- <a href="/index-temp"> -->
+                    <button onclick="history.back()" class="icon-close"> 
                         <ion-icon name="close"></ion-icon>
                     </button>
-                </a>
+                <!-- </a> -->
             {% endif %}
                 
             <h1>Description</h1>

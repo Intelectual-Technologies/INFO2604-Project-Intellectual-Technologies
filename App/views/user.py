@@ -50,7 +50,7 @@ def static_user_page():
 def get_categories_page():
     categories = get_all_categories()
     flash(f"Categories")
-    return render_template('categories.html', categories=categories, category_detail=None, current_user = current_user)
+    return render_template('categories.html', categories=categories, category_detail=None)
 
 @user_views.route('/render-details/<string:name>', methods=['GET'])
 def get_details_page(name):
