@@ -8,6 +8,9 @@
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+  
 </head>
 
 <body>
@@ -21,11 +24,13 @@
 
     <div class="right-section">
       <div class="icons" id="header">
+        <a href="/render-all-recipes">All Recipes</a>
         {% if is_authenticated %}
           <a href="/users">My Recipes</a>
           <a href="/categories">Categories</a>
+          <a href="/logout">Logout</a>
         {% endif %}
-        <a href="/render-all-recipes">Recipes</a>
+        
         {% block link %}
         {% endblock %}
         
