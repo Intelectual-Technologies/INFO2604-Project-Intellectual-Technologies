@@ -8,20 +8,29 @@
 {% block content %}
     <div class="category-content active" id="content">
         <div class="wrapper">
+            <button onclick="history.back()" class="icon-close"> 
+                <ion-icon name="close"></ion-icon>
+            </button>
             {% if item_details.category_name %}
-                <!-- <a href="/render-recipes/{{item_details.category_name}}"> -->
-                    <button onclick="history.back()" class="icon-close"> 
-                        <ion-icon name="close"></ion-icon>
-                    </button>
-                <!-- </a> -->
-            {% else %}
-                <!-- <a href="/index-temp"> -->
-                    <button onclick="history.back()" class="icon-close"> 
-                        <ion-icon name="close"></ion-icon>
-                    </button>
-                <!-- </a> -->
-            {% endif %}
+                <h2>Ingredients</h2>
                 
+                <p>
+                    {% for ingredient in item_details.ingredient %}
+                        - {{ingredient.name}} -
+                    {% endfor %}
+                </p>
+                {% if is_authenticated%}
+                <p>
+                    Missing Ingredients:
+                    {% for user_ingredient in current_user.ingredient %}
+                        {% if user_ingredient.name not in item_details.ingredient %}
+                            - {{user_ingredient.name}} -
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                {% endif %}
+            {% endif %}
+            
             <h1>Description</h1>
             <p>{{item_details.description}}</p>
         </div>

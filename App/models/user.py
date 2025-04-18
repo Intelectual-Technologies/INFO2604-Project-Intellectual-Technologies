@@ -6,6 +6,8 @@ class User(db.Model):
     username =  db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(120), nullable=False)
+    ingredient = db.relationship('Ingredient', secondary= 'user_ingredient', backref=db.backref('user', lazy = True))
+    recipe = db.relationship('Recipe', secondary= 'user_recipe', backref=db.backref('user', lazy = True))
 
     def __init__(self, username, email, password):
         self.username = username
