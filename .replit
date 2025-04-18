@@ -1,0 +1,9 @@
+modules = ["python-3.12", "web", "nodejs-20"]
+run = "npm run server"
+
+[nix]
+channel = "stable-24_05"
+packages = ["libev", "libmysqlclient"]
+
+[deployment]
+run = ["sh", "-c", "npm run server"]
