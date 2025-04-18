@@ -1,5 +1,5 @@
 import click, pytest, sys
-from flask import Flask, request
+from flask import Flask
 from flask.cli import with_appcontext, AppGroup
 
 from App.database import db, get_migrate
@@ -19,11 +19,11 @@ def init():
     initialize()
     print('database intialized')
 
-@app.route('/debug')
-def debug():
-    print("Cookies:", request.cookies)
-    print("Authorization Header:", request.headers.get('Authorization'))
-    return "Check logs"
+# @app.route('/debug')
+# def debug():
+#     print("Cookies:", request.cookies)
+#     print("Authorization Header:", request.headers.get('Authorization'))
+#     return "Check logs"
 
 '''
 User Commands
