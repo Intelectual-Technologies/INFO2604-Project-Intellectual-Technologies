@@ -32,62 +32,36 @@
       </div>
       <div class="main">
         <div class="category-content" id="content">
-          <div class="card">
-            <img src="#" alt="Loading..." style="width:100%">
-            <h1>Loading...</h1>
-            <p class="title">Details:</p>
-            <p class="details">Loading...</p>
-            <button id="show-details"> Loading...</button>
-            <p><button>Loading...</button></p>
-          </div>
-          <div class="card">
-            <img src="#" alt="Loading..." style="width:100%">
-            <h1>Loading...</h1>
-            <p class="title">Details:</p>
-            <p class="details">Loading...</p>
-            <button id="show-details"> Loading...</button>
-            <p><button>Loading...</button></p>
-          </div>
-          <div class="card">
-            <img src="#" alt="Loading..." style="width:100%">
-            <h1>Loading...</h1>
-            <p class="title">Details:</p>
-            <p class="details">Loading...</p>
-            <button id="show-details"> Loading...</button>
-            <p><button>Loading...</button></p>
-          </div>
-          <div class="card">
-            <img src="#" alt="Loading..." style="width:100%">
-            <h1>Loading...</h1>
-            <p class="title">Details:</p>
-            <p class="details">Loading...</p>
-            <button id="show-details"> Loading...</button>
-            <p><button>Loading...</button></p>
-          </div>
-          <div class="card">
-            <img src="#" alt="Loading..." style="width:100%">
-            <h1>Loading...</h1>
-            <p class="title">Details:</p>
-            <p class="details">Loading...</p>
-            <button id="show-details"> Loading...</button>
-            <p><button>Loading...</button></p>
-          </div>
-          <div class="card">
-            <img src="#" alt="Loading..." style="width:100%">
-            <h1>Loading...</h1>
-            <p class="title">Details:</p>
-            <p class="details">Loading...</p>
-            <button id="show-details"> Loading...</button>
-            <p><button>Loading...</button></p>
-          </div>
-          <div class="card">
-            <img src="#" alt="Loading..." style="width:100%">
-            <h1>Loading...</h1>
-            <p class="title">Details:</p>
-            <p class="details">Loading...</p>
-            <button id="show-details"> Loading...</button>
-            <p><button>Loading...</button></p>
-          </div>
+          {% for recipe in current_user.recipe %}
+            <div class="card">
+                <img src="{{recipe.image}}" alt="John" style="width:100%">
+                <h1>{{recipe.name}}</h1>
+                <p class="title">Details:</p>
+                <p class="details">{{recipe.description}}</p>
+                <div class="small-icons" id="icons">
+                  <a href="{{recipe.yt}}"><i class="fa fa-youtube-play" style="font-size:24px"></i></a>
+                  
+                  {%if is_authenticated%}
+                    {% if recipe not in current_user.recipe %}
+                      <span id="{{recipe.name}}">
+                          <a onclick="favorite({{recipe.id}}, '{{recipe.name}}')" ><ion-icon name="star-outline"></ion-icon></a>
+                      </span>
+                      {% else %}
+                      <span id="{{recipe.name}}">
+                          <a onclick="unfavorite({{recipe.id}}, '{{recipe.name}}')" ><ion-icon name="star"></ion-icon></a>
+                      </span>
+                    {% endif %}
+                  {% endif %}
+                </div>
+                <a href="/render-details/{{recipe.name}}">
+                    <p><button>Show Recipe</button></p>
+                </a>
+            </div>
+          {% endfor %}
+
+
+
+          
     
         </div>
     </div>

@@ -8,7 +8,10 @@ from App.controllers import (
     get_all_users,
     get_all_users_json,
     add_user_ingredient,
+    remove_user_ingredient,
     get_all_ingredients,
+    add_user_recipe,
+    remove_user_recipe,
     jwt_required
 )
 
@@ -49,5 +52,30 @@ def add_user_ingredient_action(name):
         return redirect(url_for('user_views.get_user_page'))
     return redirect(url_for('user_views.get_user_page'))
 
+@user_views.route('/remove-user-ingredient/<string:name>', methods=['GET'])
+@jwt_required()
+def remove_user_ingredient_action(name):
+    ingredient = remove_user_ingredient(current_user.id, name)
+    
+    if not ingredient:
+        flash("Ingredient not found")
+        return redirect(url_for('user_views.get_user_page'))
+    return redirect(url_for('user_views.get_user_page'))
 
+@user_views.route('/add-user-recipe/<int:id>', methods=['POST'])
+@jwt_required()
+def add_user_recipe_action(id):
+    recipe = add_user_recipe(current_user.id, id)
+    
+    if not recipe:
+        return jsonify({'success': False, 'message': 'Recipe not found'}), 404
+    return jsonify({'success': True, 'message': 'Recipe added to favorites'}), 200
 
+@user_views.route('/remove-user-recipe/<int:id>', methods=['POST'])
+@jwt_required()
+def remove_user_recipe_action(id):
+    recipe = remove_user_recipe(current_user.id, id)
+    
+    if not recipe:
+        return jsonify({'success': False, 'message': 'Recipe not found'}), 404
+    return jsonify({'success': True, 'message': 'Recipe removed from favorites'}), 200
