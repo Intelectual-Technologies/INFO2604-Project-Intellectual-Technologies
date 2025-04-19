@@ -25,6 +25,11 @@
     <br>
     <a href="/signup-page" >Signup</a>
     <br>
+    {% else %}
+    <a href="/users">My Recipes</a>
+    <br>
+    <a href="/logout">Logout</a>
+    <br>
     {% endif %}
     {% if current_user != none %}
     <p id="user">

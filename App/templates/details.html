@@ -16,17 +16,24 @@
                 
                 <p>
                     {% for ingredient in item_details.ingredient %}
-                        - {{ingredient.name}} -
+                        {{ingredient.name}}
+                        {% if not loop.last %}
+                        -
+                        {% endif %}
                     {% endfor %}
                 </p>
                 {% if is_authenticated%}
+                <h3>Missing Ingredients</h3>
                 <p>
-                    Missing Ingredients:
-                    {% for user_ingredient in current_user.ingredient %}
-                        {% if user_ingredient.name not in item_details.ingredient %}
-                            - {{user_ingredient.name}} -
+                    {% for ingredient in item_details.ingredient %}
+                        {% if ingredient not in current_user.ingredient %}
+                            {{ingredient.name}}
+                            {% if not loop.last %}
+                            -
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
+                    
                 </p>
                 {% endif %}
             {% endif %}
