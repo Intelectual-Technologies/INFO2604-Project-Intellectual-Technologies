@@ -6,3 +6,9 @@ def add_ingredient(id, name, description):
     db.session.add(ingredient)
     db.session.commit()
     return ingredient
+
+def get_all_ingredients():
+    ingredients = Ingredient.query.all()
+    if ingredients:
+        return ingredients
+    return None

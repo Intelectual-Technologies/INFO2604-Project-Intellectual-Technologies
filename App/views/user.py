@@ -7,6 +7,8 @@ from App.controllers import (
     create_user,
     get_all_users,
     get_all_users_json,
+    add_user_ingredient,
+    get_all_ingredients,
     jwt_required
 )
 
@@ -15,9 +17,8 @@ user_views = Blueprint('user_views', __name__, template_folder='../templates')
 @user_views.route('/users', methods=['GET'])
 @jwt_required()
 def get_user_page():
-    users = get_all_users()
-    
-    return render_template('users.html', users=users)
+    ingredeients = get_all_ingredients()
+    return render_template('users.html', ingredients=ingredeients)
 
 @user_views.route('/users', methods=['POST'])
 def create_user_action():
@@ -37,6 +38,16 @@ def create_user_endpoint():
     email = data['username'] + "@mail.com"
     user = create_user(data['username'], email, data['password'])
     return jsonify({'message': f"user {user.username} created with id {user.id}"})
+
+@user_views.route('/add-user-ingredient/<string:name>', methods=['GET'])
+@jwt_required()
+def add_user_ingredient_action(name):
+    ingredient = add_user_ingredient(current_user.id, name)
+    
+    if not ingredient:
+        flash("Ingredient not found")
+        return redirect(url_for('user_views.get_user_page'))
+    return redirect(url_for('user_views.get_user_page'))
 
 
 

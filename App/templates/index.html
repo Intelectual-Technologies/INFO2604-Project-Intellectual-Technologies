@@ -5,9 +5,7 @@
 {{ super() }}
 
 {% block link %}
-    {% if is_authenticated %}
-        <a href="/logout">Logout</a>
-    {% else %}
+    {% if not is_authenticated %}
         <a href="/login-page">Login</a>
         <a href="/signup-page">Signup</a>
     {% endif %}

@@ -12,9 +12,9 @@
         <div class="dropdown">
           <button class="dropbtn">Dropdown</button>
           <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            {% for ingredient in ingredients %}
+              <a href="/add-user-ingredient/{{ingredient.name}}">{{ingredient.name}}</a>
+            {% endfor %}
           </div>
         </div>
 
@@ -22,9 +22,9 @@
         <br>
         <h1>My Ingredients</h1>
         <ul>
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>Milk</li>
+          {% for ingredient in current_user.ingredient %}
+            <li>{{ingredient.name}}</li>
+          {% endfor %}
         </ul>
         
         
