@@ -1,9 +1,14 @@
 modules = ["python-3.12", "web", "nodejs-20"]
-run = "npm run server"
+run = "npm run serve"
 
 [nix]
 channel = "stable-24_05"
 packages = ["libev", "libmysqlclient"]
 
 [deployment]
-run = ["sh", "-c", "npm run server"]
+run = ["sh", "-c", "npm run serve"]
+
+[[ports]]
+localPort = 8080
+externalPort = 80
+exposeLocalhost = true
