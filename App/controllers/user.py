@@ -1,4 +1,4 @@
-from App.models import User, Ingredient
+from App.models import User, Ingredient, Recipe
 from App.database import db
 
 def create_user(username, email, password):
@@ -40,6 +40,45 @@ def add_user_ingredient(id, ingredient_name):
         return None
     if ingredient not in user.ingredient:
         user.ingredient.append(ingredient)
+        db.session.add(user)
+        db.session.commit()
+    return True
+
+def remove_user_ingredient(id, ingredient_name):
+    user = get_user(id)
+    if not user:
+        return None
+    ingredient = Ingredient.query.filter_by(name=ingredient_name).first()
+    if not ingredient:
+        return None
+    if ingredient in user.ingredient:
+        user.ingredient.remove(ingredient)
+        db.session.add(user)
+        db.session.commit()
+    return True
+
+def add_user_recipe(id, recipe_id):
+    user = get_user(id)
+    if not user:
+        return None
+    recipe = Recipe.query.filter_by(id=recipe_id).first()
+    if not recipe:
+        return None
+    if recipe not in user.recipe:
+        user.recipe.append(recipe)
+        db.session.add(user)
+        db.session.commit()
+    return True
+
+def remove_user_recipe(id, recipe_id):
+    user = get_user(id)
+    if not user:
+        return None
+    recipe = Recipe.query.filter_by(id=recipe_id).first()
+    if not recipe:
+        return None
+    if recipe in user.recipe:
+        user.recipe.remove(recipe)
         db.session.add(user)
         db.session.commit()
     return True

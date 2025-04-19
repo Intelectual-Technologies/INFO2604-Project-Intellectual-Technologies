@@ -37,25 +37,56 @@ function openNav() {
 //END NAV CODE
 
 
-    function favorite(name){
-      const icon = document.getElementById('name');
+    function favorite(recipeId, recipeName) {
+      fetch(`/add-user-recipe/${recipeId}`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+            const icon = document.getElementById(`${recipeName}`);
 
-      let html = '';
-
-      html = `
-        <a ><ion-icon  name="star"></ion-icon></a>
-      `;
-
-      console.log(icon.innerHTML)
-      
-      icon.innerHTML = html;
-
+            let html = '';
+    
+            html = `
+              <a onclick="unfavorite(${recipeId}, '${recipeName}')"><ion-icon  name="star"></ion-icon></a>
+            `;
+    
+            icon.innerHTML = html;
+          } else {
+              console.error(data.message);
+          }
+      })
+      .catch(error => console.error('Error:', error));
     }
 
-    function unfavorite(){
-      const icon = document.getElementById('icons');
+    function unfavorite(recipeId, recipeName) {
+      fetch(`/remove-user-recipe/${recipeId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+            const icon = document.getElementById(`${recipeName}`);
 
-      icon.classList.remove('active');
+            let html = '';
+    
+            html = `
+              <a onclick="favorite(${recipeId}, '${recipeName}')"><ion-icon  name="star-outline"></ion-icon></a>
+            `;
+                
+            icon.innerHTML = html;
+          } else {
+              console.error(data.message);
+          }
+      })
+      .catch(error => console.error('Error:', error));
     }
 
 
