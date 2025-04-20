@@ -13,7 +13,7 @@
         <h2>Add Ingredients</h2>
         <ul>
           {% for ingredient in ingredients %}
-            <li><a href="/add-user-ingredient/{{ingredient.name}}">{{ingredient.name}}</a></li>
+          <a href="/add-user-ingredient/{{ingredient.name}}"><li>{{ingredient.name}}</li></a>
           {% endfor %}
         </ul>
 
@@ -22,7 +22,7 @@
         <h2>My Ingredients</h2>
         <ul>
           {% for ingredient in current_user.ingredient %}
-          <li><a href="/remove-user-ingredient/{{ingredient.name}}">{{ingredient.name}}</a></li>
+          <a href="/remove-user-ingredient/{{ingredient.name}}"><li>{{ingredient.name}}</li></a>
           {% endfor %}
         </ul>
         

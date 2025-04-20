@@ -14,6 +14,7 @@ from App.controllers import (
 recipe_views = Blueprint('recipe_views', __name__, template_folder='../templates')
 
 @recipe_views.route('/render-recipes/<string:name>', methods=['GET'])
+@jwt_required()
 def get_recipe_page(name):
     category = get_category(name)
     if category:

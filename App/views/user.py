@@ -28,7 +28,7 @@ def create_user_action():
     data = request.form
     flash(f"User {data['username']} created!")
     create_user(data['username'], data['email'], data['password'])
-    return redirect(url_for('user_views.get_user_page'))
+    return redirect(url_for('auth_views.get_login_page'))
 
 @user_views.route('/api/users', methods=['GET'])
 def get_users_action():
