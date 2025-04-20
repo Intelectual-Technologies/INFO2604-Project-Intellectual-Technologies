@@ -19,7 +19,7 @@
 
         <br>
         <br>
-        <h2>My Ingredients</h2>
+        <h2>{{current_user.username.capitalize()}}'s Ingredients</h2>
         <ul>
           {% for ingredient in current_user.ingredient %}
           <a href="/remove-user-ingredient/{{ingredient.name}}"><li>{{ingredient.name}}</li></a>
