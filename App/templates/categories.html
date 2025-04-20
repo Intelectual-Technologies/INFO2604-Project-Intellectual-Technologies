@@ -5,6 +5,17 @@
 
 {% block head %}Categories{% endblock %}
 
+{% block search %}
+    <form action="/search-categories" method="POST">
+        <div class="example" id="search-bar">
+        
+            <input type="text" name="search" placeholder="Search Categories..." id="searchKey">
+            
+            <button type="submit"><i class="fa fa-search"></i></ion-icon></button>
+        </div>
+    </form>
+{% endblock %}
+
 {% block content %}
     <div class="category-content" id="content">
         {% for category in categories %}

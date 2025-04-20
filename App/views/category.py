@@ -18,3 +18,12 @@ def get_categories_page():
     categories = get_all_categories()
     flash(f"Categories")
     return render_template('categories.html', categories=categories, category_detail=None)
+
+@category_views.route('/search-categories', methods=['POST'])
+def search_categories():
+    search_query = request.form.get('search')
+    if search_query:
+        categories = get_all_categories()
+        filtered_categories = [category for category in categories if search_query.lower() in category.name.lower()]
+        return render_template('categories.html', categories=filtered_categories)
+    return redirect(request.referrer)

@@ -12,6 +12,20 @@
     {% endif %}
 {% endblock %}
 
+{% block search %}
+    <form action="/search-recipes" method="POST">
+        <div class="example" id="search-bar">
+            {% if category_name %}
+                <input type="text" name="search" placeholder="Search {{category_name}} Recipes..." id="searchKey">
+            {% else %}
+                <input type="text" placeholder="Search All Recipes..." name="search" id="searchKey">
+            {% endif %}
+            
+            <button type="submit"><i class="fa fa-search"></i></ion-icon></button>
+        </div>
+    </form>
+{% endblock %}
+
 
 {% block content %}
     <div class="category-content" id="content">

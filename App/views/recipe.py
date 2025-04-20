@@ -47,3 +47,12 @@ def get_all_recipes_page():
     if recipes:
         return render_template('recipes.html', recipes=recipes)
     return redirect(url_for('user_views.get_categories_page'))
+
+@recipe_views.route('/search-recipes', methods=['POST'])
+def search_recipes():
+    search_query = request.form.get('search')
+    if search_query:
+        recipes = get_all_recipes()
+        filtered_recipes = [recipe for recipe in recipes if search_query.lower() in recipe.name.lower()]
+        return render_template('recipes.html', recipes=filtered_recipes)
+    return redirect(request.referrer)
