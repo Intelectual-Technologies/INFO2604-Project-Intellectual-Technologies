@@ -110,37 +110,39 @@ nav img:hover {
 
 @media screen and (max-width: 768px) {
   nav {
-      padding: 0 0%;
-      flex-wrap: wrap;
-      background-color: #00d8e2; 
-      justify-content: center;
+    padding: 0 10px; /* Add some padding instead of 0% */
+    height: auto; /* Allow height to adjust based on content */
+    min-height: 70px; /* Maintain minimum height */
+    flex-wrap: wrap;
+    background-color: #00d8e2; 
+    justify-content: center;
   }
 
   .left-section,
   .right-section {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center; /* Center the content horizontally and vertically */
-      background-color: #00d8e2; /* Add background color */
-      padding: 0; /* Remove default padding */
+    width: auto; /* Don't force full width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00d8e2;
+    padding: 5px; /* Add some padding */
   }
 
   .icons {
-      justify-content: center;
+    justify-content: center;
   }
 
   nav a {
-      margin: 4px;
+    margin: 4px;
   }
 
   .search {
-      width: 70%;
-      margin-top: 10px;
+    width: 100%; /* Full width search on mobile */
+    margin: 5px 0; /* Add vertical spacing */
   }
 
   .search-input {
-      font-size: 14px;
+    font-size: 14px;
   }
 }
 
@@ -209,37 +211,34 @@ nav img:hover {
 
 @media screen and (max-width: 768px) {
   body {
-      font-family: 'Lexend', sans-serif;
-      margin: 0;
-      min-height: 100vh;
-      background-color: #e0f4f5;
-      background-size: cover;
-      background-position: center;
+    font-family: 'Lexend', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #e0f4f5;
+    background-size: cover;
+    background-position: center;
   }
 
   .body-text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: calc(100vh - 70px); 
-      text-align: center;
-      padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); 
+    text-align: center;
+    padding: 16px;
   }
 
   .body-text p1 {
-      font-size: 24px;
+    font-size: 36px; /* Less dramatic reduction from 80px */
+    margin: 5% 5%; /* Reduce margins on mobile */
+    padding: 10px; /* Add some padding */
   }
 
-  .body-text p2 {
-      font-size: 14px; 
-  }
-
-  .body-text a {
-      font-size: 14px; 
-  }
-
+  .body-text p2, 
+  .body-text a, 
   .body-text p3 {
-      font-size: 14px;
+    font-size: 16px; /* More readable size */
+    padding: 10px; /* Consistent padding */
   }
 }
 
@@ -312,6 +311,15 @@ nav img:hover {
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+  .form-box-login, 
+  .form-box-signup {
+    width: 90%; /* Percentage-based width */
+    max-width: 280px; /* Maximum width */
+    padding: 15px; /* Slightly less padding */
+  }
 }
 
 /* END STYLE FOR LOGIN */
@@ -398,43 +406,50 @@ nav img:hover {
 
 @media screen and (max-height: 450px) {
   .sidebar {
-      padding-top: 15px;
+    padding-top: 15px;
   }
 
   .sidebar a {
-      font-size: 18px;
+    font-size: 18px;
   }
 
   .category-head {
-      position: absolute; 
-      top: 10px; 
-      left: 50%; 
-      transform: translateX(-50%); 
-      font-size: 20px; 
-      margin-left: 0; 
+    position: absolute; 
+    top: 10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    font-size: 20px; 
+    margin-left: 0; 
   }
 }
 
 @media screen and (max-width: 768px) {
   .sidebar {
-      padding-top: 15px; 
+    padding-top: 60px; /* Maintain space for close button */
+    width: 70%; /* Limit width when open */
+    max-width: 250px; /* Maximum width */
   }
 
   .sidebar a {
-      font-size: 18px;
+    font-size: 18px;
+    padding: 8px; /* Increase touch target size */
   }
 
   .card h1 {
-      font-size: 20px;
+    font-size: 20px;
   }
 
   .card {
-      max-width: 250px;
+    max-width: 100%; /* Allow cards to fill width of their container */
   }
 
   .head-text {
-      font-size: 20px; 
-      margin-left: 5px; 
+    font-size: 20px; 
+    margin-left: 5px; 
+  }
+
+  #main {
+    padding-left: 16px; /* Consistent padding */
   }
 }
 
@@ -491,32 +506,27 @@ nav img:hover {
 @media screen and (max-width: 768px) {
 
   .head-text {
-      font-size: 20px; 
-      margin-left: 5px; 
+    font-size: 20px; 
+    margin-left: 5px; 
   }
 
   .openbtn {
-      font-size: 16px; 
+    font-size: 16px; 
   }
 
   .example input[type=text] {
-      font-size: 12px; 
-      width: 70%; 
-      padding: 8px; 
+    font-size: 12px; 
+    width: 65%; /* Adjust width */
+    padding: 8px; 
   }
 
   .example button {
-      font-size: 12px;
-      padding: 8px 16px; 
-  }
-
-  .example button {
-      font-size: 12px; 
-      padding: 8px 16px; 
+    font-size: 12px;
+    padding: 8px 16px; 
   }
 
   .category-head {
-      padding-top: 20px;
+    padding-top: 20px;
   }
 }
 
@@ -534,6 +544,12 @@ nav img:hover {
   grid-gap: 20px;
 }
 
+@media screen and (max-width: 768px) {
+  .category-content {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller minimum size */
+    grid-gap: 10px; /* Less gap on mobile */
+  }
+}
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
@@ -649,6 +665,14 @@ nav img:hover {
   text-align: center;
 }
 
+@media screen and (max-width: 768px) {
+  .category-content.active .wrapper {
+    width: 90%; /* Use percentage instead of fixed 700px */
+    max-width: 500px; /* Set a maximum width */
+    height: 350px; /* Slightly smaller height */
+  }
+}
+
 .category-content.active .wrapper p{
   padding: 10px;
 }
@@ -710,6 +734,11 @@ nav img:hover {
   padding: 20px;
 }
 
+@media screen and (max-width: 768px) {
+  .row {
+    flex-direction: column; /* Stack row elements vertically */
+  }
+}
 
 .dropbtn {
   background-color: #4CAF50;
@@ -736,6 +765,14 @@ nav img:hover {
   z-index: 1;
   overflow-x: scroll;
   max-height: 30em; /* Set a maximum height for the dropdown */
+}
+
+@media screen and (max-width: 768px) {
+  .dropdown-content {
+    min-width: 200px; /* Make dropdown wider */
+    right: 0; /* Align to right */
+    max-height: 50vh; /* Limit height based on viewport */
+  }
 }
 
 /* Links inside the dropdown */
@@ -777,8 +814,17 @@ nav img:hover {
   min-height: 100px; 
   overflow-x: hidden;
   transition: transform 0.3s ease; 
-  
+
 }
+
+@media screen and (max-width: 768px) {
+  .side {
+    margin: 10px; /* Less margin */
+    max-width: 100%; /* Full width on mobile */
+    max-height: 50vh; /* Limit height */
+  }
+}
+
 .side h1 {
   text-align: center;
   color: #000080;
@@ -818,7 +864,7 @@ nav img:hover {
   color: #fef8f0;
   cursor: pointer;
 } */
- 
+
 .side a {
   text-decoration: none;
   color: #000080;
@@ -850,7 +896,7 @@ nav img:hover {
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
- 
+
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
