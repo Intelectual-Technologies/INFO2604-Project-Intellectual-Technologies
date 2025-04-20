@@ -5,25 +5,24 @@
 {{ super() }}
 
 {% block content %}
-
   
     <div class="row">
       <div class="side">
-        <div class="dropdown">
-          <button class="dropbtn">Dropdown</button>
-          <div class="dropdown-content">
-            {% for ingredient in ingredients %}
-              <a href="/add-user-ingredient/{{ingredient.name}}">{{ingredient.name}}</a>
-            {% endfor %}
-          </div>
-        </div>
+
+        <h1>Users</h1>
+        <h2>Ingredients</h2>
+        <ul>
+          {% for ingredient in ingredients %}
+            <li><a href="/add-user-ingredient/{{ingredient.name}}">{{ingredient.name}}</a></li>
+          {% endfor %}
+        </ul>
 
         <br>
         <br>
-        <h1>My Ingredients</h1>
+        <h2>My Ingredients</h2>
         <ul>
           {% for ingredient in current_user.ingredient %}
-            <li>{{ingredient.name}}</li>
+          <li><a href="/remove-user-ingredient/{{ingredient.name}}">{{ingredient.name}}</a></li>
           {% endfor %}
         </ul>
         
