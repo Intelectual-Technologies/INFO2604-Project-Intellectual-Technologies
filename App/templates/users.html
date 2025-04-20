@@ -9,8 +9,8 @@
     <div class="row">
       <div class="side">
 
-        <h1>Users</h1>
-        <h2>Ingredients</h2>
+        <h1>{{current_user.username.capitalize()}}'s Recipes</h1>
+        <h2>Add Ingredients</h2>
         <ul>
           {% for ingredient in ingredients %}
             <li><a href="/add-user-ingredient/{{ingredient.name}}">{{ingredient.name}}</a></li>
